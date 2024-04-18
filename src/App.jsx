@@ -1,33 +1,32 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useEffect } from 'react'
 import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
 
+  useEffect(function() {
+    const minusBtn = document.querySelector(".btn-minus")
+    const plusBtn = document.querySelector(".btn-plus")
+
+    minusBtn.addEventListener("click", function() {
+      setCount(prevValue => prevValue - 1)
+    })
+
+    plusBtn.addEventListener("click", function() {
+      setCount(prevValue => prevValue + 1)
+    })
+  }, [])
+  
+
   return (
     <>
+      <h1 className="title">Stitch Count</h1>
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <button className="btn-minus">-</button>
+        <span className="count-display">{count}</span>
+        <button className="btn-plus">+</button>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
