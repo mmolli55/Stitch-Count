@@ -47,6 +47,13 @@ function App() {
   }
 
   // Need to add 'selected' class to options when clicked
+  useEffect(() => setIncrementOptions(prevOptions => prevOptions.map(option => {
+    if (option.id === incrementAmount) {
+      return {...option, selected: true}
+    } else {
+      return {...option, selected: false}
+    }
+  })), [incrementAmount])
 
   const incrementOptionElements = incrementOptions.map(option => {
     return (
