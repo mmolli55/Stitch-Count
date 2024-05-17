@@ -34,17 +34,19 @@ function App() {
     }
   ])
 
-
-  /* THIS NEEDS FIXED */
-  function changeIncrementValue(event) {
-    setIncrementOptions(prevOptions => prevOptions.map(option => {
-      if(event.target.id === option.id) {
-        return {...option, selected: !option.selected}
-      } else {
-        return {...option}
-      }
-    }))
+  function increaseCount() {
+    setCount(prevCount => prevCount + incrementAmount)
   }
+
+  function decreaseCount() {
+    setCount(prevCount => prevCount - incrementAmount)
+  }
+
+  function changeIncrementValue(event) {
+    setIncrementAmout(Number(event.target.id))
+  }
+
+  // Need to add 'selected' class to options when clicked
 
   const incrementOptionElements = incrementOptions.map(option => {
     return (
@@ -58,19 +60,6 @@ function App() {
     )
   })
 
-  useEffect(function() {
-    const minusBtn = document.querySelector(".btn-minus")
-    const plusBtn = document.querySelector(".btn-plus")
-
-    minusBtn.addEventListener("click", function() {
-      setCount(prevValue => prevValue - incrementAmount)
-    })
-
-    plusBtn.addEventListener("click", function() {
-      setCount(prevValue => prevValue + incrementAmount)
-    })
-  }, [])
-
   return (
     <>
       <h1 className="title poetsen-one-regular">Stitch Count</h1>
@@ -80,9 +69,9 @@ function App() {
       </div>
 
       <div className="button-container">
-        <button className="btn-minus">&ndash;</button>
+        <button onClick={decreaseCount} className="btn-minus">&ndash;</button>
         <div className="current-increment-value-display">{incrementAmount}</div>
-        <button className="btn-plus">+</button>
+        <button onClick={increaseCount} className="btn-plus">+</button>
       </div>
 
       <p className="increment-text">Select increment value:</p>
