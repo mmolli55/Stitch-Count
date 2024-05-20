@@ -64,6 +64,7 @@ function App() {
   const rowElements = allRows.map(row => {
     return (
       <Row 
+        key={row.rowNumber}
         rowNumber={row.rowNumber}
         stitches={row.stitches}
       />
