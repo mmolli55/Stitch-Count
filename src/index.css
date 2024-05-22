@@ -98,14 +98,6 @@ body {
 .new-row-btn-container {
 }
 
-.all-rows-container {
-}
-
-.all-rows-header, .row {
-  display: flex;
-  justify-content: space-around;
-}
-
 /* Buttons */
 
 .btn-minus, 
@@ -134,4 +126,37 @@ body {
   font-size: 2em;
   padding: .7em 1.5em;
   border-radius: 8px;
+}
+
+/* Table Styles */
+
+.all-rows-container {
+  border-bottom: none;
+  background: #ededed;
+}
+
+.all-rows-header {
+  display: flex;
+  justify-content: space-around;
+  background-color: #F272A1;;
+}
+
+.row {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+  padding-bottom: 13px;
+  border-bottom: 3px solid #F272A1;
+}
+
+.table-header {
+  font-size: 1.8em;
+  color:#ededed;
+  font-weight: bold;
+  padding: 1rem;
+}
+
+.table-value {
+  font-size: 1.8em;
+  color: #404040;
 }

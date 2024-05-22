@@ -96,7 +96,7 @@ function App() {
       </div>
 
       <div className="all-rows-container">
-        <p className="all-rows-header"><span>Row</span><span>Stich Count</span></p>
+        <p className="all-rows-header"><span class="table-header">Row</span><span class="table-header">Stich Count</span></p>
         {rowElements}
       </div>
 

@@ -1,8 +1,5 @@
 export default function Row(props) {
-    const style = {
-        borderBottom: "3px solid #F272A1"
-    }
     return (
-        <p className="row" style={style}><span>{props.rowNumber}</span><span>{props.stitches}</span></p>
+        <p className="row"><span class="table-value">{props.rowNumber}</span><span class="table-value">{props.stitches}</span></p>
     )
 }
