@@ -41,6 +41,13 @@ function App() {
     resetCount()
   }
 
+  function deleteRow(rowNumber) {
+    if (confirm("Are you sure you want to delete this row?")) {
+      
+      setAllRows(prevRows => prevRows.filter(row => rowNumber != row.rowNumber))
+    }
+  }
+
   useEffect(() => setIncrementOptions(prevOptions => prevOptions.map(option => {
     if (option.id === incrementAmount) {
       return {...option, selected: true}
@@ -67,6 +74,7 @@ function App() {
         key={row.rowNumber}
         rowNumber={row.rowNumber}
         stitches={row.stitches}
+        deleteRow={deleteRow}
       />
     )
   })
@@ -96,7 +104,10 @@ function App() {
       </div>
 
       <div className="all-rows-container">
-        <p className="all-rows-header"><span class="table-header">Row</span><span class="table-header">Stich Count</span></p>
+        {allRows.length > 0 &&<p className="all-rows-header">
+          <span className="table-header">Row</span>
+          <span className="table-header">Stich Count</span>
+        </p>}
         {rowElements}
       </div>
 
