@@ -44,7 +44,15 @@ function App() {
   function deleteRow(rowNumber) {
     if (confirm("Are you sure you want to delete this row?")) {
       
-      setAllRows(prevRows => prevRows.filter(row => rowNumber != row.rowNumber))
+      setAllRows(prevRows => {
+        const remainingRows = prevRows.filter(row => rowNumber != row.rowNumber)
+        const updatedNumberRows = []
+
+        remainingRows.map(row => {
+          updatedNumberRows.push({rowNumber: updatedNumberRows.length + 1, stitches: row.stitches})
+        })
+        return updatedNumberRows
+      })
     }
   }
 
@@ -107,6 +115,7 @@ function App() {
         {allRows.length > 0 &&<p className="all-rows-header">
           <span className="table-header">Row</span>
           <span className="table-header">Stich Count</span>
+          <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
         </p>}
         {rowElements}
       </div>
