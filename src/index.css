@@ -27,7 +27,7 @@ body {
 }
 
 .title {
-  font-size: 5em;
+  font-size: 3em;
   line-height: 1.1;
   color: #037F8C;
   margin: 20px;
@@ -44,7 +44,7 @@ body {
 /* Positioning Containers */
 
 .count-container {
-  font-size: 2.5em;
+  font-size: 2em;
   background-color: #ededed;
   border-radius: 50px;
   border: 5px solid #037F8C;
@@ -52,7 +52,7 @@ body {
 }
 
 .count-display {
-  font-size: 3em;
+  font-size: 2em;
 }
 
 .button-container {
@@ -64,8 +64,8 @@ body {
 .current-increment-value-display {
   width: 75px;
   height: 75px;
-  font-size: 2.5em;
-  line-height: 1.8em;
+  font-size: 2em;
+  line-height: 2.3em;
   margin-top:auto;
   margin-bottom:auto;
   text-align:center;
@@ -80,16 +80,16 @@ body {
 }
 
 .btn-increment-value {
-  font-size: 2.5em;
+  font-size: 1.5em;
   border-radius: 50%;
-  width: 75px;
-  height: 75px;
+  width: 50px;
+  height: 50px;
   color: #404040;
 }
 
 .increment-text {
   margin-top: 30px;
-  font-size: 2em;
+  font-size: 1.5em;
   margin-bottom: 20px;
   color:#037F8C;
   font-weight: bold;
@@ -104,17 +104,17 @@ body {
 .btn-plus {
   border-radius: 8px;
   padding: 0.6em 1.2em;
-  font-size: 3em;
+  font-size: 2em;
   font-weight: 500;
   font-family: inherit;
   background-color: #F272A1;
   cursor: pointer;
   border: 0;
   color: #404040;
-  border: 5px solid transparent;
+  border: 3px solid transparent;
 }
 .btn-minus:hover, .btn-plus:hover {
-  border: 5px solid #F299B1;
+  border: 3px solid #F299B1;
 }
 
 .btn-new-row{
