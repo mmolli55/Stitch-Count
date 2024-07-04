@@ -108,7 +108,7 @@ function App() {
       </div>
 
       <div className="new-row-btn-container">
-          <button className="btn-new-row" onClick={() => addNewRow(count)}>Add New Row</button>
+        <button className="btn-new-row" onClick={() => addNewRow(count)}>Add New Row</button>
       </div>
 
       <div className="all-rows-container">
@@ -119,7 +119,6 @@ function App() {
         </p>}
         {rowElements}
       </div>
-
     </>
   )
 }
