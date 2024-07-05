@@ -86,6 +86,11 @@ body {
   width: 50px;
   height: 50px;
   color: #404040;
+  cursor: pointer;
+}
+
+button.btn-increment-value:hover {
+  border: 3px solid #F272A1 !important;
 }
 
 .increment-text {
@@ -119,15 +124,21 @@ body {
   border: 3px solid #F299B1;
 }
 
-.btn-new-row{
+.btn-new-row {
   width: 100%;
   background-color: #037F8C;
   color: #ededed;
   border: none;
   margin: 30px auto;
   font-size: 1.5em;
-  padding: .7em 1.5em;
+  padding: .6em 1.5em;
   border-radius: 8px;
+  cursor: pointer;
+  border: 3px solid #037F8C;
+}
+
+.btn-new-row:hover {
+  border: 3px solid #82D0D9;
 }
 
 /* Table Styles */
@@ -139,8 +150,11 @@ body {
 
 .all-rows-header {
   display: flex;
-  justify-content: space-around;
-  background-color: #F272A1;;
+  justify-content: space-between;
+  padding-left: 10px;
+  padding-right: 40px;
+  background-color: #F272A1;
+  margin: 0;
 }
 
 .table-header {
@@ -152,10 +166,12 @@ body {
 
 .row {
   display: flex;
-  justify-content: space-around;
-  padding: 0;
-  padding-bottom: 10px;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  padding: 10px 10px 15px 40px;
   border-bottom: 3px solid #F272A1;
+  margin: 0;
 }
 
 .table-value {
@@ -171,6 +187,12 @@ body {
   width: 40px;
   height: 40px;
   border-radius: 8px;
+  cursor: pointer;
+  border: 3px solid #ededed;
+}
+
+.delete-row-icon:hover {
+  border: 3px solid #F272A1;
 }
 
 /* Media Queries */
