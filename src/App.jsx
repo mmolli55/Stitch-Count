@@ -39,6 +39,7 @@ function App() {
     })
 
     resetCount()
+    setCurrentRow(prevValue => prevValue + 1)
   }
 
   function deleteRow(rowNumber) {
@@ -53,6 +54,8 @@ function App() {
         })
         return updatedNumberRows
       })
+
+      setCurrentRow(prevValue => prevValue - 1)
     }
   }
 
@@ -90,7 +93,7 @@ function App() {
   return (
     <>
       <h1 className="title poetsen-one-regular">Stitch Count</h1>
-      <p className="row-number-display">Row: {currentRow}</p>
+      <p className="row-number-display">Row: <span id="row-num-value">{currentRow}</span></p>
       <div className="count-container">
         <span className="count-display">{count}</span>
       </div>

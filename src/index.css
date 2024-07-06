@@ -42,6 +42,10 @@ body {
   margin-bottom: 5px;
 }
 
+#row-num-value {
+  color: #404040;
+}
+
 /* Positioning Containers */
 
 .count-container {
