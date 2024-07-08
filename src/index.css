@@ -31,6 +31,8 @@ body {
   line-height: 1.1;
   color: #037F8C;
   margin: 0;
+  border-bottom: 2px dashed #037F8C;
+  padding-bottom: 5px;
 }
 
 .row-number-display {

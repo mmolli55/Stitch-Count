@@ -147,11 +147,11 @@ function App() {
       </div>
 
       <div className="all-rows-container">
-        {project.allRows.length > 0 &&<p className="all-rows-header">
+        <p className="all-rows-header">
           <span className="table-header">Row</span>
           <span className="table-header">Stich Count</span>
           <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-        </p>}
+        </p>
         {rowElements}
       </div>
     </>
