@@ -114,9 +114,20 @@ function App() {
   return (
     <>
       <h1 className="title poetsen-one-regular">Stitch Count</h1>
-      <p className="row-number-display">Row: <span id="row-num-value">{project.currentRow}</span></p>
-      <div className="count-container">
-        <span className="count-display">{project.currentCount}</span>
+
+      <div id="labels-container">
+        <p className="label">Row</p>
+        <p className="label">Stitches</p>
+      </div>
+      
+      <div id="counts-container">
+        <div className="count-container">
+          <span id="current-row-display">{project.currentRow}</span>
+        </div>
+        
+        <div className="count-container">
+          <span id="current-stitch-display">{project.currentCount}</span>
+        </div>
       </div>
 
       <div className="button-container">
