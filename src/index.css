@@ -49,11 +49,11 @@ body {
 /* Positioning Containers */
 
 .count-container {
-  font-size: 2em;
+  font-size: 1.8em;
   background-color: #ededed;
   border-radius: 50px;
   border: 5px solid #037F8C;
-  padding: 8px;
+  padding: 5px;
 }
 
 .count-display {
