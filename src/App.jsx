@@ -5,10 +5,12 @@ import IncrementValue from "./components/IncrementValue"
 import Row from "./components/Row"
 
 function App() {
-  const [count, setCount] = useState(0)
-  const [currentRow, setCurrentRow] = useState(1)
-  const [allRows, setAllRows] = useState([])
-  const [incrementAmount, setIncrementAmout] = useState(1)
+  
+  const [project, setProject] = useState(
+    () => JSON.parse(localStorage.getItem("project")) 
+      || {currentCount: 0, currentRow: 1, allRows: [], currentIncrement: 1}
+  )
+
   const [incrementOptions, setIncrementOptions] = useState([
     { id: 1, value: 1, selected: true}, 
     { id: 2, value: 2, selected: false}, 
@@ -17,55 +19,74 @@ function App() {
     { id: 10, value: 10, selected: false}
   ])
 
+  useEffect(() => {
+    localStorage.setItem("project", JSON.stringify(project))
+  }, [project])
+
   function increaseCount() {
-    setCount(prevCount => prevCount + incrementAmount)
+    setProject(prevProject => {
+      return {...prevProject,
+        currentCount: prevProject.currentCount + prevProject.currentIncrement
+      }
+    })
   }
 
   function decreaseCount() {
-    setCount(prevCount => prevCount - incrementAmount)
+    setProject(prevProject => {
+      return {...prevProject,
+        currentCount: prevProject.currentCount - prevProject.currentIncrement
+      }
+    })
   }
 
   function resetCount() {
-    setCount(0)
+    setProject(prevProject => {
+      return {...prevProject, currentCount: 0}
+    })
   }
 
   function changeIncrementValue(event) {
-    setIncrementAmout(Number(event.target.id))
+    setProject(prevProject => {
+      return {...prevProject, currentIncrement: Number(event.target.id)}
+    })
   }
 
   function addNewRow(stitchCount) {
-    setAllRows(prevRows => {
-      return [...prevRows, {rowNumber: prevRows.length + 1, stitches: stitchCount}]
+    setProject(prevProject => {
+      return {...prevProject,
+        allRows: [...prevProject.allRows, {rowNumber: prevProject.allRows.length + 1, stitches: stitchCount}],
+        currentRow: prevProject.currentRow + 1
+      }
     })
-
     resetCount()
-    setCurrentRow(prevValue => prevValue + 1)
   }
 
   function deleteRow(rowNumber) {
     if (confirm("Are you sure you want to delete this row?")) {
-      
-      setAllRows(prevRows => {
-        const remainingRows = prevRows.filter(row => rowNumber != row.rowNumber)
+
+      setProject(prevProject => {
+        const remainingRows = prevProject.allRows.filter(row => rowNumber != row.rowNumber)
         const updatedNumberRows = []
 
         remainingRows.map(row => {
           updatedNumberRows.push({rowNumber: updatedNumberRows.length + 1, stitches: row.stitches})
         })
-        return updatedNumberRows
-      })
 
-      setCurrentRow(prevValue => prevValue - 1)
+        return {...prevProject,
+          allRows: updatedNumberRows,
+          currentRow: prevProject.currentRow - 1
+        }
+      })
     }
   }
 
   useEffect(() => setIncrementOptions(prevOptions => prevOptions.map(option => {
-    if (option.id === incrementAmount) {
+    if (option.id === project.currentIncrement) {
       return {...option, selected: true}
     } else {
       return {...option, selected: false}
     }
-  })), [incrementAmount])
+  })), [project.currentIncrement])
 
   const incrementOptionElements = incrementOptions.map(option => {
     return (
@@ -79,7 +100,7 @@ function App() {
     )
   })
 
-  const rowElements = allRows.map(row => {
+  const rowElements = project.allRows.map(row => {
     return (
       <Row 
         key={row.rowNumber}
@@ -93,14 +114,14 @@ function App() {
   return (
     <>
       <h1 className="title poetsen-one-regular">Stitch Count</h1>
-      <p className="row-number-display">Row: <span id="row-num-value">{currentRow}</span></p>
+      <p className="row-number-display">Row: <span id="row-num-value">{project.currentRow}</span></p>
       <div className="count-container">
-        <span className="count-display">{count}</span>
+        <span className="count-display">{project.currentCount}</span>
       </div>
 
       <div className="button-container">
         <button onClick={decreaseCount} className="btn-minus">&ndash;</button>
-        <div className="current-increment-value-display">{incrementAmount}</div>
+        <div className="current-increment-value-display">{project.currentIncrement}</div>
         <button onClick={increaseCount} className="btn-plus">+</button>
       </div>
 
@@ -111,11 +132,11 @@ function App() {
       </div>
 
       <div className="new-row-btn-container">
-        <button className="btn-new-row" onClick={() => addNewRow(count)}>Add New Row</button>
+        <button className="btn-new-row" onClick={() => addNewRow(project.currentCount)}>Add New Row</button>
       </div>
 
       <div className="all-rows-container">
-        {allRows.length > 0 &&<p className="all-rows-header">
+        {project.allRows.length > 0 &&<p className="all-rows-header">
           <span className="table-header">Row</span>
           <span className="table-header">Stich Count</span>
           <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
