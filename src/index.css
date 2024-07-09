@@ -104,11 +104,12 @@ body {
 
 .btn-increment-value {
   font-size: 1.5em;
-  border-radius: 50%;
+  border-radius: 50px;
   width: 50px;
   height: 50px;
   color: #404040;
   cursor: pointer;
+  padding: 0;
 }
 
 button.btn-increment-value:hover {
